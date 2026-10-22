@@ -1,0 +1,84 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-bg: var(--c-bg);
+  --color-panel: var(--c-panel);
+  --color-raised: var(--c-raised);
+  --color-line: var(--c-line);
+  --color-ink: var(--c-ink);
+  --color-mute: var(--c-mute);
+  --color-accent: var(--c-accent);
+  --color-accent-ink: var(--c-accent-ink);
+}
+
+:root {
+  --c-bg: #f4f2ec;
+  --c-panel: #fbfaf7;
+  --c-raised: #ffffff;
+  --c-line: #e2ded3;
+  --c-ink: #1c1f24;
+  --c-mute: #6b7078;
+  --c-accent: #b45309;
+  --c-accent-ink: #ffffff;
+  color-scheme: light;
+}
+
+.dark {
+  --c-bg: #0c0e11;
+  --c-panel: #12151a;
+  --c-raised: #181c22;
+  --c-line: #252b34;
+  --c-ink: #e7eaee;
+  --c-mute: #8a919c;
+  --c-accent: #f5a524;
+  --c-accent-ink: #1a1203;
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-line) transparent;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--c-accent) 35%, transparent);
+}
+
+mark.hl {
+  background: color-mix(in oklab, var(--c-accent) 28%, transparent);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.25s ease-out both;
+}
